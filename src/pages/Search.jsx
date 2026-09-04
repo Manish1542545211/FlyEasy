@@ -1,18 +1,18 @@
-import { Link } from 'react-router-dom';
 import PageContainer from '../components/PageContainer';
+import FlightSearchForm from '../components/FlightSearchForm';
 
 function Search() {
   return (
     <PageContainer>
-      <section className="placeholder-page" id="search-page">
-        <h1 className="placeholder-title">Flight Search</h1>
-        <p className="placeholder-description">
-          Search for available flights.
-        </p>
-        <div className="placeholder-notice">
-          <p>Module under development.</p>
+      <section className="search-page-section" id="search-page">
+        <div className="page-header">
+          <h1 className="page-title">Flight Search</h1>
+          <p className="page-description">
+            Search for available flights by entering your travel details below.
+          </p>
         </div>
-        <Link to="/" className="placeholder-home-link">Home</Link>
+        
+        <FlightSearchForm />
       </section>
     </PageContainer>
   );

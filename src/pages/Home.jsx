@@ -1,22 +1,20 @@
-import { Link } from 'react-router-dom';
 import ModuleCard from '../components/ModuleCard';
 import modules from '../data/modules';
+import FlightSearchForm from '../components/FlightSearchForm';
 
 function Home() {
   return (
     <>
-      {/* Hero Section */}
+      {/* Hero Section with Search Form */}
       <section className="hero" id="hero-section">
         <div className="hero-inner">
           <h1 className="hero-title">FlyEasy</h1>
           <p className="hero-tagline">Simple. Clear. Ready to Fly.</p>
           <p className="hero-description">
-            An airline reservation platform designed
-            to simplify the flight booking process.
+            An airline reservation platform designed to simplify the flight booking process.
           </p>
-          <Link to="/search" className="hero-cta" id="explore-modules-btn">
-            Explore Modules
-          </Link>
+
+          <FlightSearchForm />
         </div>
       </section>
 
