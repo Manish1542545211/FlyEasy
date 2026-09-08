@@ -1,9 +1,8 @@
-// Course Topic 37-42: React Router Route Params (useParams), Dynamic Routing & Navigation
+// Booking Details: React Router Route Params (useParams), Dynamic Routing & Navigation
 
-import React from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import BoardingPassCard from '../components/flight/BoardingPassCard';
-import { ArrowLeft, Luggage, ShieldAlert, Clock } from 'lucide-react';
+import { ArrowLeft, Luggage, ShieldAlert, Clock, Users, Armchair } from 'lucide-react';
 
 export default function BookingDetailsPage({ getBookingById, cancelBooking }) {
   const { id } = useParams(); // Extract route param :id
@@ -49,6 +48,28 @@ export default function BookingDetailsPage({ getBookingById, cancelBooking }) {
           onCancel={handleCancel}
           showDetailLink={false}
         />
+
+        {/* All Passengers Section (for group bookings) */}
+        {booking.passengers && booking.passengers.length > 1 && (
+          <div className="bd-passengers-card glass-panel">
+            <h3 className="bd-passengers-title">
+              <Users size={18} /> All Passengers ({booking.passengers.length})
+            </h3>
+            <div className="bd-passengers-list">
+              {booking.passengers.map((p, i) => (
+                <div key={i} className="bd-passenger-item">
+                  <div className="bd-passenger-name">
+                    <strong>Passenger {i + 1}:</strong> {p.fullName}
+                  </div>
+                  <div className="bd-passenger-meta">
+                    <span><Armchair size={13} /> Seat {p.seatNumber}</span>
+                    <span>Age: {p.age} • {p.gender}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
 
         {/* Itinerary & Amenities Grid */}
         <div className="amenities-grid">

@@ -1,4 +1,4 @@
-// Course Topic 37-42: React Router Entry Provider (BrowserRouter)
+// App entry point with BrowserRouter
 
 import React from 'react';
 import ReactDOM from 'react-dom/client';

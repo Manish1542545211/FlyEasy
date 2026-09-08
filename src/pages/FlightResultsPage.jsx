@@ -1,6 +1,6 @@
-// Module 2: Flight Results — Clean, Simple, Filterable Results Screen
+// Module 2: Flight Results
 
-import React, { useState, useMemo } from 'react';
+import { useState, useMemo } from 'react';
 import { useSearchParams, useNavigate } from 'react-router-dom';
 import { INITIAL_FLIGHTS, CITIES } from '../data/mockFlights';
 import FlightCard from '../components/flight/FlightCard';
@@ -13,7 +13,7 @@ export default function FlightResultsPage() {
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
 
-  // Read search params from the URL (preserved from search page)
+  // Read search params from URL
   const from = searchParams.get('from') || 'DEL';
   const to = searchParams.get('to') || 'BOM';
   const departDate = searchParams.get('departDate') || new Date().toISOString().split('T')[0];
@@ -23,7 +23,7 @@ export default function FlightResultsPage() {
   const [filterStops, setFilterStops] = useState('ALL');
   const [sortBy, setSortBy] = useState('CHEAPEST');
 
-  // Filter mock flight data strictly using the selected from and to
+  // Filter flights by route and stops
   const matchingFlights = useMemo(() => {
     return INITIAL_FLIGHTS.filter((flight) => {
       const matchesRoute = flight.from === from && flight.to === to;
@@ -46,7 +46,7 @@ export default function FlightResultsPage() {
     });
   }, [from, to, filterStops, sortBy]);
 
-  // Handle "Select Flight" — navigate to Flight Details (Module 3)
+  // Navigate to Flight Details
   const handleSelectFlight = (flight) => {
     const qs = new URLSearchParams({
       from,

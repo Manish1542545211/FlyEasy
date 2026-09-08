@@ -1,6 +1,5 @@
-// Course Topic 19-24 & 31-36: Controlled Forms, Event Handling, React Router Navigation
+// Book Page: Controlled Forms, Event Handling, React Router Navigation
 
-import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import FlightSearchForm from '../components/flight/FlightSearchForm';
 import { Sparkles } from 'lucide-react';

@@ -1,6 +1,5 @@
-// Course Topics 25-30, 31-36 & 37-42: Component Hierarchy, Custom Hooks & React Router Setup
+// App: Component Hierarchy, Custom Hooks & React Router Setup
 
-import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Header from './components/common/Header';
 import Footer from './components/common/Footer';
@@ -8,13 +7,16 @@ import HomePage from './pages/HomePage';
 import BookPage from './pages/BookPage';
 import FlightResultsPage from './pages/FlightResultsPage';
 import FlightDetailsPage from './pages/FlightDetailsPage';
+import SeatSelection from './pages/SeatSelection';
+import PassengerDetails from './pages/PassengerDetails';
+import Confirmation from './pages/Confirmation';
 import MyBookingsPage from './pages/MyBookingsPage';
 import BookingDetailsPage from './pages/BookingDetailsPage';
 import NotFoundPage from './pages/NotFoundPage';
 import { useBookings } from './hooks/useBookings';
 
 export default function App() {
-  const { bookings, cancelBooking, getBookingById } = useBookings();
+  const { bookings, addBooking, cancelBooking, getBookingById } = useBookings();
 
   return (
     <div className="app-wrapper">
@@ -30,6 +32,18 @@ export default function App() {
           <Route path="/results" element={<FlightResultsPage />} />
           {/* Module 3: Flight Details */}
           <Route path="/flights/:id" element={<FlightDetailsPage />} />
+          {/* Module 4: Seat Selection */}
+          <Route path="/seat-selection/:id" element={<SeatSelection />} />
+          {/* Module 5: Passenger Details */}
+          <Route
+            path="/passenger-details"
+            element={<PassengerDetails addBooking={addBooking} />}
+          />
+          {/* Booking Confirmation */}
+          <Route
+            path="/confirmation/:id"
+            element={<Confirmation getBookingById={getBookingById} />}
+          />
           <Route 
             path="/bookings" 
             element={<MyBookingsPage bookings={bookings} cancelBooking={cancelBooking} />} 

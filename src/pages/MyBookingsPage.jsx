@@ -1,6 +1,5 @@
-// Course Topic 31-36: Custom Hooks, LocalStorage State, Conditional Rendering & List Keys
+// My Bookings: Custom Hooks, LocalStorage State, Conditional Rendering & List Keys
 
-import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import BoardingPassCard from '../components/flight/BoardingPassCard';
 import { Bookmark, Plane, PlusCircle } from 'lucide-react';

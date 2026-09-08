@@ -1,6 +1,5 @@
-// Module 3: Flight Details — Clean, Simple Flight Breakdown
+// Module 3: Flight Details
 
-import React from 'react';
 import { useParams, useSearchParams, useNavigate } from 'react-router-dom';
 import { INITIAL_FLIGHTS } from '../data/mockFlights';
 import {
@@ -14,25 +13,26 @@ export default function FlightDetailsPage() {
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
 
-  // Lookup the exact flight clicked from mockFlights
+  // Find the selected flight
   const flight = INITIAL_FLIGHTS.find((f) => f.id === id);
 
-  // Preserve search context for back navigation and pricing
+  // Search context for back navigation and pricing
   const from = searchParams.get('from') || '';
   const to = searchParams.get('to') || '';
   const departDate = searchParams.get('departDate') || '';
   const passengers = Number(searchParams.get('passengers')) || 1;
   const cabinClass = searchParams.get('cabinClass') || 'Economy';
 
-  // Back to results with preserved search state
+  // Back to results
   const handleBack = () => {
     const qs = new URLSearchParams({ from, to, departDate, passengers, cabinClass }).toString();
     navigate(`/results?${qs}`);
   };
 
-  // Simple Continue button (handoff to next module)
+  // Continue to seat selection
   const handleContinue = () => {
-    alert(`Proceeding to passenger details for ${flight?.flightNumber} (${cabinClass}). Next module coming soon!`);
+    const qs = new URLSearchParams({ from, to, departDate, passengers, cabinClass }).toString();
+    navigate(`/seat-selection/${flight.id}?${qs}`);
   };
 
   const formatDate = (dateStr) => {
@@ -41,10 +41,12 @@ export default function FlightDetailsPage() {
     return d.toLocaleDateString('en-IN', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
   };
 
-  // Cabin class price multiplier
-  const multiplier = cabinClass === 'Business' ? 1.8 : cabinClass === 'First' ? 2.5 : 1;
+  // Price multiplier based on cabin class
+  let multiplier = 1;
+  if (cabinClass === 'Business') multiplier = 1.8;
+  else if (cabinClass === 'First') multiplier = 2.5;
 
-  // Flight not found guard
+  // Guard: flight not found
   if (!flight) {
     return (
       <div className="flight-details-page animate-fade-in">
@@ -63,7 +65,7 @@ export default function FlightDetailsPage() {
   const pricePerSeat = Math.round(flight.price * multiplier);
   const totalPrice = pricePerSeat * passengers;
 
-  // Baggage based on class
+  // Baggage info based on class
   const baggageInfo = {
     Economy: { cabin: flight.cabinBaggage || '7 kg', checkIn: flight.checkInBaggage || '15 kg', fare: 'Standard Economy' },
     Business: { cabin: '15 kg', checkIn: '25 kg', fare: 'Business Class' },

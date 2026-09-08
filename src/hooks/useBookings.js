@@ -1,4 +1,4 @@
-// Course Topic 31-36: Custom Hooks, useState, useEffect & Browser Storage (LocalStorage + JSON)
+// Custom hook for managing bookings with localStorage
 
 import { useState, useEffect } from 'react';
 
@@ -61,7 +61,7 @@ export function useBookings() {
     const createdBooking = {
       id: bookingId,
       ...newBookingData,
-      seatNumber: randomSeat,
+      seatNumber: newBookingData.seatNumber || randomSeat,
       gate: randomGate,
       status: 'Confirmed',
       bookedAt: new Date().toISOString(),

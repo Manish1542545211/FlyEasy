@@ -1,6 +1,5 @@
-// Course Topic 25-30: Component Composition, Props, and Conditional Rendering
+// Flight Card: Component Composition, Props, and Conditional Rendering
 
-import React from 'react';
 import { Plane, Clock, UserCheck, ArrowRight } from 'lucide-react';
 
 export default function FlightCard({ flight, onSelectFlight }) {

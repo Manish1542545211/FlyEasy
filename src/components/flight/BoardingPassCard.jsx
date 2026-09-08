@@ -1,6 +1,5 @@
-// Course Topic 25-30: Component Composition & Dynamic Rendering
+// Boarding Pass Card: Component Composition & Dynamic Rendering
 
-import React from 'react';
 import { Plane, Calendar, User, QrCode, Printer, Trash2, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
@@ -53,7 +52,12 @@ export default function BoardingPassCard({ booking, onCancel, showDetailLink = t
         <div className="pass-info-grid">
           <div className="info-cell">
             <span className="cell-label"><User size={12} /> Passenger</span>
-            <span className="cell-value">{booking.passengerName}</span>
+            <span className="cell-value">
+              {booking.passengerName}
+              {booking.totalPassengers > 1 && (
+                <span className="bp-passenger-count"> +{booking.totalPassengers - 1} more</span>
+              )}
+            </span>
           </div>
 
           <div className="info-cell">

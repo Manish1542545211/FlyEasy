@@ -1,6 +1,6 @@
-// Course Topic 19-24 & 31-36: Controlled Form Components, Controlled Inputs, Events, and useState Hook
+// Flight Search Form: Controlled Inputs, Events, useState
 
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { CITIES } from '../../data/mockFlights';
 import { Calendar, Users, ArrowRightLeft, Search, PlaneTakeoff, PlaneLanding } from 'lucide-react';
 
@@ -17,7 +17,7 @@ export default function FlightSearchForm({ onSearch, initialFrom = 'DEL', initia
   const [cabinClass, setCabinClass] = useState('Economy');
   const [errorMsg, setErrorMsg] = useState('');
 
-  // Course Topic 19-24: Form Event Handling
+  // Handle form submit
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrorMsg('');

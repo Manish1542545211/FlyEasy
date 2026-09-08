@@ -1,6 +1,5 @@
-// Course Topic 37-42: React Router 404 Pages & Catch-all (*) Routes
+// 404 Page: React Router Catch-all (*) Routes
 
-import React from 'react';
 import { Link } from 'react-router-dom';
 import { Plane, Compass, Home } from 'lucide-react';
 

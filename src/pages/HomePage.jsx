@@ -1,6 +1,5 @@
-// Course Topic 1-6 & 25-30: Semantic HTML5, JSX Composition, Props & Interactive Elements
+// Home Page: Semantic HTML5, JSX Composition, Props & Interactive Elements
 
-import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Plane, Sparkles, ShieldCheck, Zap, ArrowRight, Star } from 'lucide-react';
 

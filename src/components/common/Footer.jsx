@@ -1,6 +1,5 @@
-// Course Topic 1-6: HTML5 Semantic Structure (<footer>, <article>, <section>)
+// Footer: HTML5 Semantic Structure
 
-import React from 'react';
 import { Plane, User, Mail, Phone } from 'lucide-react';
 import { Link } from 'react-router-dom';
 

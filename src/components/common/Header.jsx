@@ -1,6 +1,6 @@
-// Course Topic 37-42: React Router Navigation (NavLink, useNavigate) & HTML5 Header/Nav
+// Header: React Router Navigation (NavLink, useNavigate) & HTML5 Header/Nav
 
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { Plane, Bookmark, Menu, X, ArrowRight } from 'lucide-react';
 
